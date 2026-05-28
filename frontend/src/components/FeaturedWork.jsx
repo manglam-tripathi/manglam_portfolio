@@ -21,7 +21,7 @@ export default function FeaturedWork() {
       <h2 className="section-heading">Featured Work</h2>
       <p className="section-subheading">A handful of projects I'm proud of.</p>
 
-      <div className="grid sm:grid-cols-2 gap-6 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8">
         {featured.map((item) => (
           <div key={item.title} className="card group">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-sky-500 dark:group-hover:text-sky-400 transition-colors">

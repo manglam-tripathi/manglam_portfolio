@@ -112,7 +112,7 @@ export default function ArticlesPage() {
             <div className="mt-8 flex justify-center">
               <button
                 onClick={loadMore}
-                className="btn-outline px-8"
+                className="btn-outline px-6 sm:px-8 w-full sm:w-auto"
               >
                 Load More ({total - articles.length} remaining)
               </button>

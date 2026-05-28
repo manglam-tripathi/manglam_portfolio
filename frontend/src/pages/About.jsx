@@ -45,7 +45,7 @@ export default function About() {
         <p className="font-mono text-sky-500 dark:text-sky-400 text-sm tracking-widest uppercase mb-4">
           About Me
         </p>
-        <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
           I build things.<br />Then I write about them.
         </h1>
         <div className="space-y-4 text-gray-600 dark:text-gray-400 text-lg leading-relaxed max-w-2xl">
@@ -67,7 +67,7 @@ export default function About() {
       <section>
         <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">What I Do</h2>
         <p className="text-gray-500 dark:text-gray-400 mb-8">Four areas I've gone deep on.</p>
-        <div className="grid sm:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
           {whatIDo.map(({ Icon, title, desc }) => (
             <div key={title} className="card group flex gap-4">
               <div className="mt-1 shrink-0">
@@ -89,7 +89,7 @@ export default function About() {
       <section>
         <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Tech Stack</h2>
         <p className="text-gray-500 dark:text-gray-400 mb-8">Tools and technologies I work with regularly.</p>
-        <div className="grid sm:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
           {Object.entries(stack).map(([category, items]) => (
             <div key={category} className="card">
               <h3 className="text-xs font-mono text-sky-500 dark:text-sky-400 mb-3 uppercase tracking-wider">
@@ -105,7 +105,7 @@ export default function About() {
 
       {/* ── Writing ── */}
       <section>
-        <div className="card flex flex-col sm:flex-row items-start sm:items-center gap-5">
+        <div className="card flex flex-col sm:flex-row items-start gap-5">
           <div className="shrink-0 w-12 h-12 rounded-xl bg-gray-100 dark:bg-white/10 flex items-center justify-center">
             <FaMedium size={24} className="text-gray-800 dark:text-white" />
           </div>

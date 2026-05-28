@@ -11,14 +11,14 @@ export default function Hero() {
       </p>
 
       <h1
-        className="text-5xl sm:text-6xl font-bold leading-tight mb-4 text-gray-900 dark:text-white"
+        className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-4 text-gray-900 dark:text-white"
         style={{ animation: 'fadeSlideUp 0.55s cubic-bezier(0.22, 0.61, 0.36, 1) forwards', opacity: 0 }}
       >
         Manglam Tripathi
       </h1>
 
       <h2
-        className="text-2xl sm:text-3xl font-semibold text-gray-500 dark:text-gray-400 mb-6"
+        className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-500 dark:text-gray-400 mb-6"
         style={{ animation: 'fadeIn 0.7s ease 300ms forwards', opacity: 0 }}
       >
         Software Engineer &amp; Technical Writer

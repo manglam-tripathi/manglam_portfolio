@@ -13,7 +13,8 @@ export default function useMediumArticles({ pageSize = 10 } = {}) {
     else setLoadingMore(true)
 
     try {
-      const res = await fetch(`/api/articles?offset=${currentOffset}&limit=${pageSize}`)
+      const base = import.meta.env.VITE_API_BASE ?? ''
+      const res = await fetch(`${base}/api/articles?offset=${currentOffset}&limit=${pageSize}`)
       if (!res.ok) throw new Error(`HTTP ${res.status}`)
       const data = await res.json()
 
