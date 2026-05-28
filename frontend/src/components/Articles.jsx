@@ -1,4 +1,4 @@
-﻿import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import useMediumArticles from '../hooks/useMediumArticles'
 
 function ArticleCard({ article }) {
@@ -18,11 +18,11 @@ function ArticleCard({ article }) {
         />
       )}
       <div>
-        <p className="font-mono text-xs text-sky-400 mb-1">{article.pubDate}</p>
-        <h3 className="text-base font-semibold text-white group-hover:text-sky-400 transition-colors leading-snug mb-2">
+        <p className="font-mono text-xs text-sky-500 dark:text-sky-400 mb-1">{article.pubDate}</p>
+        <h3 className="text-base font-semibold text-gray-900 dark:text-white group-hover:text-sky-500 dark:group-hover:text-sky-400 transition-colors leading-snug mb-2">
           {article.title}
         </h3>
-        <p className="text-gray-400 text-sm line-clamp-3 leading-relaxed">
+        <p className="text-gray-500 dark:text-gray-400 text-sm line-clamp-3 leading-relaxed">
           {article.description}
         </p>
       </div>
@@ -38,10 +38,10 @@ function ArticleCard({ article }) {
 }
 
 export default function ArticlesPreview() {
-  const { articles, loading, error } = useMediumArticles({ limit: 3 })
+  const { articles, loading, error } = useMediumArticles({ pageSize: 3 })
 
   return (
-    <section className="max-w-5xl mx-auto px-4 sm:px-6 py-16" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+    <section className="max-w-5xl mx-auto px-4 sm:px-6 py-16 divider">
       <h2 className="section-heading">Latest Articles</h2>
       <p className="section-subheading">Fresh from my Medium publication.</p>
 
@@ -49,17 +49,17 @@ export default function ArticlesPreview() {
         <div className="grid sm:grid-cols-3 gap-6">
           {[1, 2, 3].map((n) => (
             <div key={n} className="card animate-pulse">
-              <div className="h-40 bg-gray-800 rounded-lg mb-4" />
-              <div className="h-4 bg-gray-800 rounded w-1/3 mb-3" />
-              <div className="h-5 bg-gray-800 rounded w-full mb-2" />
-              <div className="h-4 bg-gray-800 rounded w-5/6" />
+              <div className="h-40 bg-gray-200 dark:bg-gray-800 rounded-lg mb-4" />
+              <div className="h-4 bg-gray-200 dark:bg-gray-800 rounded w-1/3 mb-3" />
+              <div className="h-5 bg-gray-200 dark:bg-gray-800 rounded w-full mb-2" />
+              <div className="h-4 bg-gray-200 dark:bg-gray-800 rounded w-5/6" />
             </div>
           ))}
         </div>
       )}
 
       {error && (
-        <p className="text-red-400 text-sm">Could not load articles. {error}</p>
+        <p className="text-red-500 dark:text-red-400 text-sm">Could not load articles. {error}</p>
       )}
 
       {!loading && !error && (
@@ -70,8 +70,7 @@ export default function ArticlesPreview() {
         </div>
       )}
 
-      <Link to="/articles" className="btn-outline inline-block">All Articles â†’</Link>
+      <Link to="/articles" className="btn-outline inline-block">All Articles →</Link>
     </section>
   )
 }
-

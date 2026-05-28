@@ -11,6 +11,13 @@ class Article(BaseModel):
     categories: list[str] = []
 
 
+class PaginatedArticles(BaseModel):
+    items: list[Article]
+    total: int
+    offset: int
+    limit: int
+
+
 class Project(BaseModel):
     title: str
     description: str

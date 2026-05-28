@@ -1,66 +1,48 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 
-const CACHE_KEY = 'medium_articles_cache'
-const CACHE_TTL_MS = 10 * 60 * 1000 // 10 minutes
+export default function useMediumArticles({ pageSize = 10 } = {}) {
+  const [articles, setArticles]       = useState([])
+  const [total, setTotal]             = useState(0)
+  const [offset, setOffset]           = useState(0)
+  const [loading, setLoading]         = useState(true)
+  const [loadingMore, setLoadingMore] = useState(false)
+  const [error, setError]             = useState(null)
 
-function getCache() {
-  try {
-    const raw = sessionStorage.getItem(CACHE_KEY)
-    if (!raw) return null
-    const { data, ts } = JSON.parse(raw)
-    if (Date.now() - ts < CACHE_TTL_MS) return data
-  } catch {
-    // ignore corrupt cache
-  }
-  return null
-}
+  const fetchPage = useCallback(async (currentOffset, isInitial) => {
+    if (isInitial) setLoading(true)
+    else setLoadingMore(true)
 
-function setCache(data) {
-  try {
-    sessionStorage.setItem(CACHE_KEY, JSON.stringify({ data, ts: Date.now() }))
-  } catch {
-    // ignore storage errors
-  }
-}
+    try {
+      const res = await fetch(`/api/articles?offset=${currentOffset}&limit=${pageSize}`)
+      if (!res.ok) throw new Error(`HTTP ${res.status}`)
+      const data = await res.json()
 
-export default function useMediumArticles({ limit = 10 } = {}) {
-  const [articles, setArticles] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
+      setTotal(data.total)
+      setOffset(currentOffset + data.items.length)
+      setArticles(prev => isInitial ? data.items : [...prev, ...data.items])
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      if (isInitial) setLoading(false)
+      else setLoadingMore(false)
+    }
+  }, [pageSize])
 
   useEffect(() => {
-    let cancelled = false
+    fetchPage(0, true)
+  }, [fetchPage])
 
-    async function fetchArticles() {
-      const cached = getCache()
-      if (cached) {
-        if (!cancelled) {
-          setArticles(cached.slice(0, limit))
-          setLoading(false)
-        }
-        return
-      }
+  const loadMore = useCallback(() => {
+    if (!loadingMore) fetchPage(offset, false)
+  }, [loadingMore, offset, fetchPage])
 
-      try {
-        const res = await fetch(`/api/articles?limit=${limit}`)
-        if (!res.ok) throw new Error(`HTTP ${res.status}`)
-        const data = await res.json()
-        setCache(data)
-        if (!cancelled) {
-          setArticles(data.slice(0, limit))
-          setLoading(false)
-        }
-      } catch (err) {
-        if (!cancelled) {
-          setError(err.message)
-          setLoading(false)
-        }
-      }
-    }
-
-    fetchArticles()
-    return () => { cancelled = true }
-  }, [limit])
-
-  return { articles, loading, error }
+  return {
+    articles,
+    total,
+    loading,
+    loadingMore,
+    error,
+    hasMore: offset < total,
+    loadMore,
+  }
 }

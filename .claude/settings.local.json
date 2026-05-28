@@ -10,7 +10,8 @@
       "Bash(curl -s \"https://medium.com/feed/@datajockeystreams\")",
       "Bash(python3 -c ' *)",
       "PowerShell(Stop-Process -Id 28156 -Force)",
-      "PowerShell(netstat -ano)"
+      "PowerShell(netstat -ano)",
+      "Bash(npm install *)"
     ]
   }
 }

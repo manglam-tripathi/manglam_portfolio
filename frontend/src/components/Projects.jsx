@@ -3,7 +3,7 @@ const projects = [
     title: 'Project Name',
     description: 'What the project does and why it matters. Keep it punchy.',
     tags: ['Python', 'FastAPI'],
-    github: 'https://github.com/manglam',
+    github: 'https://github.com/manglam-tripathi',
     demo: null,
   },
 ]
@@ -14,8 +14,8 @@ export default function ProjectsGrid({ items = projects }) {
       {items.map((p) => (
         <div key={p.title} className="card flex flex-col gap-4">
           <div>
-            <h3 className="text-lg font-semibold text-white mb-2">{p.title}</h3>
-            <p className="text-gray-400 text-sm leading-relaxed">{p.description}</p>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{p.title}</h3>
+            <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{p.description}</p>
           </div>
           <div className="flex flex-wrap gap-2">
             {p.tags.map((t) => <span key={t} className="tag">{t}</span>)}
