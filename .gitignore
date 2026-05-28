@@ -1,0 +1,22 @@
+# dependencies
+node_modules/
+frontend/node_modules/
+
+# build output
+frontend/dist/
+frontend/.vite/
+
+# python
+__pycache__/
+*.py[cod]
+backend/.venv/
+backend/venv/
+*.egg-info/
+
+# env
+.env
+backend/.env
+
+# OS
+.DS_Store
+Thumbs.db

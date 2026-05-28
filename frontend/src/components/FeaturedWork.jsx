@@ -1,0 +1,44 @@
+﻿import { Link } from 'react-router-dom'
+
+const featured = [
+  {
+    title: 'Project Alpha',
+    description: 'A short description of your most impactful project goes here.',
+    tags: ['Python', 'FastAPI', 'PostgreSQL'],
+    href: '/projects',
+  },
+  {
+    title: 'Project Beta',
+    description: 'Another standout project demonstrating your engineering depth.',
+    tags: ['React', 'TypeScript', 'Redis'],
+    href: '/projects',
+  },
+]
+
+export default function FeaturedWork() {
+  return (
+    <section className="max-w-5xl mx-auto px-4 sm:px-6 py-16" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+      <h2 className="section-heading">Featured Work</h2>
+      <p className="section-subheading">A handful of projects I'm proud of.</p>
+
+      <div className="grid sm:grid-cols-2 gap-6 mb-8">
+        {featured.map((item) => (
+          <div key={item.title} className="card group">
+            <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-sky-400 transition-colors">
+              {item.title}
+            </h3>
+            <p className="text-gray-400 text-sm mb-4 leading-relaxed">{item.description}</p>
+            <div className="flex flex-wrap gap-2">
+              {item.tags.map((tag) => (
+                <span key={tag} className="tag">{tag}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <Link to="/projects" className="btn-outline inline-block">All Projects â†’</Link>
+    </section>
+  )
+}
+

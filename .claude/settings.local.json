@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(.venv/Scripts/uvicorn main:app --port 8000)",
+      "Bash(echo \"backend pid=$!\")",
+      "Bash(npm run *)",
+      "Bash(echo \"frontend pid=$!\")",
+      "Bash(curl -s http://localhost:8000/api/health)",
+      "Bash(curl -s http://localhost:5173)",
+      "Bash(curl -s \"https://medium.com/feed/@datajockeystreams\")",
+      "Bash(python3 -c ' *)",
+      "PowerShell(Stop-Process -Id 28156 -Force)",
+      "PowerShell(netstat -ano)"
+    ]
+  }
+}
