@@ -2,18 +2,11 @@ import ProjectsGrid from '../components/Projects'
 
 const projects = [
   {
-    title: 'Portfolio API',
-    description: 'FastAPI backend powering this portfolio with Medium RSS integration and project data endpoints.',
-    tags: ['Python', 'FastAPI', 'feedparser'],
-    github: 'https://github.com/manglam/portfolio',
-    demo: null,
-  },
-  {
-    title: 'Add your projects here',
-    description: 'Update this list in frontend/src/pages/Projects.jsx with your real projects.',
-    tags: ['React', 'Vite', 'TailwindCSS'],
-    github: null,
-    demo: null,
+    title: 'Snake Game',
+    description: 'A classic Snake game built and deployed on the web. Use arrow keys to navigate, eat food to grow, and avoid hitting the walls or yourself.',
+    tags: ['Python', 'JavaScript', 'HTML5', 'CSS3', 'Game Dev'],
+    github: 'https://github.com/manglam-tripathi/Snake-Game',
+    demo: 'https://snake-game-8r3o.onrender.com',
   },
 ]
 
