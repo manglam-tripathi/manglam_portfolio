@@ -1,3 +1,4 @@
+import html
 import re
 import time
 import feedparser
@@ -8,7 +9,8 @@ _cache: dict = {"data": None, "ts": 0}
 
 def _strip_html(text: str) -> str:
     clean = re.sub(r"<[^>]+>", " ", text or "")
-    return re.sub(r"\s+", " ", clean).strip()
+    clean = re.sub(r"\s+", " ", clean).strip()
+    return html.unescape(clean)
 
 
 def _extract_thumbnail(entry) -> str | None:
@@ -46,7 +48,7 @@ def fetch_all_articles(username: str, cache_ttl: int = 600) -> list[Article]:
         summary = _strip_html(entry.get("summary", ""))[:300]
 
         articles.append(Article(
-            title=entry.get("title", "Untitled"),
+            title=html.unescape(entry.get("title", "Untitled")),
             link=entry.get("link", ""),
             pubDate=pub,
             description=summary,

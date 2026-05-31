@@ -20,3 +20,5 @@ backend/.env
 # OS
 .DS_Store
 Thumbs.db
+
+Portfolio_Documentation.docx
