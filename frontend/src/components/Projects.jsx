@@ -1,14 +1,4 @@
-const projects = [
-  {
-    title: 'Project Name',
-    description: 'What the project does and why it matters. Keep it punchy.',
-    tags: ['Python', 'FastAPI'],
-    github: 'https://github.com/manglam-tripathi',
-    demo: null,
-  },
-]
-
-export default function ProjectsGrid({ items = projects }) {
+export default function ProjectsGrid({ items = [] }) {
   return (
     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {items.map((p) => (

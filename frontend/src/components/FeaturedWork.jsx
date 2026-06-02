@@ -2,16 +2,10 @@ import { Link } from 'react-router-dom'
 
 const featured = [
   {
-    title: 'Project Alpha',
-    description: 'A short description of your most impactful project goes here.',
-    tags: ['Python', 'FastAPI', 'PostgreSQL'],
-    href: '/projects',
-  },
-  {
-    title: 'Project Beta',
-    description: 'Another standout project demonstrating your engineering depth.',
-    tags: ['React', 'TypeScript', 'Redis'],
-    href: '/projects',
+    title: 'Snake Game',
+    description: 'A classic Snake game built and deployed on the web. Use arrow keys to navigate, eat food to grow, and avoid hitting the walls or yourself.',
+    tags: ['Python', 'JavaScript', 'HTML5', 'CSS3', 'Game Dev'],
+    href: 'https://snake-game-8r3o.onrender.com',
   },
 ]
 
